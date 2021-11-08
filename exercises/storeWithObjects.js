@@ -9,19 +9,19 @@ let process = require('process');
 */
 
 // --- DELETE THE LINES STARTING HERE ---
-let removeThisToStart = true;
+// let removeThisToStart = true;
 
-if (removeThisToStart) {
-  console.log('Hey! Open up storeWithObjects.js to see how to get started.');
-  process.exit();
-}
+// if (removeThisToStart) {
+//   console.log('Hey! Open up storeWithObjects.js to see how to get started.');
+//   process.exit();
+// }
 
 // --- DELETE THE LINES ENDING HERE ---
 
 /**
  * Creates and returns a new user (as an object).
  */
-function newUser(firstName, lastName, budget) {
+function newUser(firstName, lastName, budget, email) {
   // {} is an empty object, just like [] is an empty array
   // and just like '' is an empty string
   let user = {};
@@ -29,6 +29,7 @@ function newUser(firstName, lastName, budget) {
   user['firstName'] = firstName;
   user['lastName'] = lastName;
   user['budget'] = budget;
+  user.email = email;
 
   return user;
 }
@@ -51,13 +52,14 @@ function newSofa(name, price) {
  */
 function userCanAffordSofa(user, sofa) {
   // This is your job. :)
+  return user.budget >= sofa.price;
 }
 
 let allUsers = [
-  newUser('Alyssa', 'Morris', 1800.00),
-  newUser('Mindy', 'Weaver', 200.00),
-  newUser('Louis', 'Washington', 850.00),
-  newUser('Kevin', 'Isaacs', 80.00),
+  newUser('Alyssa', 'Morris', 1800.00, "cool@cat.com"),
+  newUser('Mindy', 'Weaver', 200.00, "sly@fox.com"),
+  newUser('Louis', 'Washington', 850.00, "sneaky@mouse.com"),
+  newUser('Kevin', 'Isaacs', 80.00, "fluffy@woof.com"),
 ];
 
 let sofa = newSofa('Nice Sofa', 800.00);
@@ -69,11 +71,11 @@ for (let user of allUsers) {
 
   console.log(`Hi, ${user['firstName']}.`);
   console.log(`Checking whether you can afford a ${sofa['name']}, please hold on....`);
-  console.log();
 
   if (userCanAffordSofa(user, sofa)) {
     console.log('Congratulations!');
     console.log(`A ${sofa['name']} costs ${sofa['price']}, which is within your budget of ${user['budget']}!`);
+    console.log(`We will be emailing you at ${user.email}.`);
   } else {
     console.log(`Sorry, ${user['firstName']}, but you can't afford a ${sofa['name']}.`);
     console.log(`Your budget is ${user['budget']}, but a ${sofa['name']} costs ${sofa['price']}.`);

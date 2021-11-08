@@ -9,24 +9,25 @@ let process = require('process');
 */
 
 // --- DELETE THE LINES STARTING HERE ---
-let removeThisToStart = true;
+// let removeThisToStart = true;
 
-if (removeThisToStart) {
-  console.log('Hey! Open up storeWithArrays.js to see how to get started.');
-  process.exit();
-}
+// if (removeThisToStart) {
+//   console.log('Hey! Open up storeWithArrays.js to see how to get started.');
+//   process.exit();
+// }
 
 // --- DELETE THE LINES ENDING HERE ---
 
 /**
  * Creates and returns a new user (as an array).
  */
-function newUser(firstName, lastName, budget) {
+function newUser(firstName, lastName, budget, email) {
   let user = [];
 
   user[0] = firstName;
   user[1] = lastName;
   user[2] = budget;
+  user[3] = email;
 
   return user;
 }
@@ -49,13 +50,14 @@ function newSofa(name, price) {
  */
 function userCanAffordSofa(user, sofa) {
   // This is your job. :)
+  return user[2] >= sofa[1];
 }
 
 let allUsers = [
-  newUser('Alyssa', 'Morris', 1800.00),
-  newUser('Mindy', 'Weaver', 200.00),
-  newUser('Louis', 'Washington', 850.00),
-  newUser('Kevin', 'Isaacs', 80.00),
+  newUser('Alyssa', 'Morris', 1800.00, "cool@cat.com"),
+  newUser('Mindy', 'Weaver', 200.00, "sly@fox.com"),
+  newUser('Louis', 'Washington', 850.00, "sneaky@mouse.com"),
+  newUser('Kevin', 'Isaacs', 80.00, "fluffy@woof.com"),
 ];
 
 let sofa = newSofa('Nice Sofa', 800.00);
@@ -71,6 +73,7 @@ for (let user of allUsers) {
   if (userCanAffordSofa(user, sofa)) {
     console.log('Congratulations!');
     console.log(`A ${sofa[0]} costs ${sofa[1]}, which is within your budget of ${user[2]}!`);
+    console.log(`We will be emailing you at ${user[3]}.`);
   } else {
     console.log(`Sorry, ${user[0]}, but you can't afford a ${sofa[0]}.`);
     console.log(`Your budget is ${user[2]}, but a ${sofa[0]} costs ${sofa[1]}.`);

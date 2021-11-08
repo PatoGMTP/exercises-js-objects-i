@@ -7,11 +7,11 @@ let process = require('process');
 // and just like '' is an empty string
 let user = {};
 
-user['firstName'] = '<Change This>';
-user['lastName'] = '<Change This>';
-user['currentLocation'] = '<Change This>';
-user['favoriteSongs'] = ['One Song', 'Another Great Song', 'Last Great Song'];
-user['age'] = 108;
+user['firstName'] = 'Patricio';
+user['lastName'] = 'Garcia';
+user['currentLocation'] = 'Katy, TX';
+user['favoriteSongs'] = ["It's The Right Time", 'All Star', 'Ave Maria'];
+user['age'] = 26;
 
 // To get started, set user['canBeDisplayed'] to true instead of false
 user['canBeDisplayed'] = true;
@@ -34,9 +34,40 @@ if (user['age'] >= 100) {
 
 console.log('Looks like you have great taste in music. Your favorite songs:');
 
-for (let i = 0; i < user['favoriteSongs'].length; i += 1) {
-  let songPosition = i + 1;
-  let songName = user['favoriteSongs'][i];
+// for (let i = 0; i < user['favoriteSongs'].length; i += 1) {
+//   let songPosition = i + 1;
+//   let songName = user['favoriteSongs'][i];
 
-  console.log(`${songPosition}. ${songName}`);
+//   console.log(`${songPosition}. ${songName}`);
+// }
+printFavorites(user["favoriteSongs"]);
+
+user["FavoriteFood"] = "Pasta";
+
+if (user["FavoriteFood"] != "Pasta")
+{
+  console.log(user["FavoriteFood"],"is great, but pasta is better!");
+}
+else
+{
+  console.log("Great choice in food, pasta is the best!");
+}
+
+user['favoriteMovies'] = ["Spirited Away", 'Interstellar', 'Inside Out'];
+
+console.log("Interesting choice of movies:");
+let i = 0;
+// for (const item in user["favoriteMovies"])
+// {
+//   console.log(i, ":" ,item);
+//   i++
+// }
+printFavorites(user["favoriteMovies"]);
+
+function printFavorites(items)
+{
+  for (let i = 0; i < items.length; i++)
+  {
+    console.log(`${i+1}.`,items[i]);
+  }
 }
